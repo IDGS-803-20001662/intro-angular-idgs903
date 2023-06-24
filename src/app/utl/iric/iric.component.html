@@ -1,0 +1,55 @@
+<div></div>
+<div class="card">
+    <div class="card-header">
+        <h2>Lista de Alumnos</h2>
+    </div>
+    <div class="card-body">
+        <div class="row">
+            <div class="col-md-2">Filtrar por:</div>
+            <div class="col-md-4">
+                <!--Enlace de datos bidireccional (propiedad y evento) two-way data binding -->
+                <input [(ngModel)]="listFilter" class="form-control" type="text">
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-6">
+                <h3>Filtro: {{listFilter}}</h3>
+            </div>
+        </div>
+        <div class="row">
+            <div class="table-responsive">
+                <table class="table" *ngIf="alumnos.length"> <!--Es una directiva de angular para saber si hay alumnos-->
+                    <thead>
+                        <tr>
+                            <th>
+                               <!--Los eventos se llaman con los parentesis y la función se pone en la igualdad-->
+                               <!--Enlace de evento o event binding--> 
+                                <button (click)="showImage()" class="btn btn-primary">Mostrar Imagen</button>
+                            </th>
+                            <th>Matricula</th>
+                            <th>Nombre</th>
+                            <th>Edad</th>
+                            <th>Correo</th>
+                            <th>Pago</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr *ngFor="let alumno of alumnos">
+                            <!--Enlace de propiedad, binding property-->
+                            <td><img *ngIf="muestraImg" [src]="alumno.foto"
+                                [title]="alumno.nombre"
+                                [style.width.px]="imageWidth"
+                                [style.margin.px]="imageMargin"></td>
+                            <td>{{alumno.matricula}}</td>
+                            <td>{{alumno.nombre | uppercase}}</td>
+                            <td>{{alumno.edad}}</td>
+                            <td>{{alumno.correo}}</td>
+                            <td>{{alumno.pago | currency}}</td>
+                            <!--<td><img [src] = "alumno.foto"></td> <!--Formato para imágenes: Directivas-->
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
