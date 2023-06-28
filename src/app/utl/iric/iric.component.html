@@ -31,10 +31,11 @@
                             <th>Edad</th>
                             <th>Correo</th>
                             <th>Pago</th>
+                            <th>Calificación</th>
                         </tr>
                     </thead>
                     <tbody>
-                        <tr *ngFor="let alumno of alumnos">
+                        <tr *ngFor="let alumno of alumnos | alumnosFilter:listFilter">
                             <!--Enlace de propiedad, binding property-->
                             <td><img *ngIf="muestraImg" [src]="alumno.foto"
                                 [title]="alumno.nombre"
@@ -45,7 +46,8 @@
                             <td>{{alumno.edad}}</td>
                             <td>{{alumno.correo}}</td>
                             <td>{{alumno.pago | currency}}</td>
-                            <!--<td><img [src] = "alumno.foto"></td> <!--Formato para imágenes: Directivas-->
+                            <td>8</td>
+                            <!--<td><img [src] = "alumno.foto"></td> Formato para imágenes: Directivas-->
                         </tr>
                     </tbody>
                 </table>
