@@ -1,0 +1,69 @@
+<div class="row">
+    <div class="col-6">
+        <form [formGroup]="alumnoForm" (ngSubmit)="onSubmit()">
+            <div class="mb-4">
+                <label for="matricula" class="form-label">Matricula:</label>
+                <input type="number" class="form-control" formControlName="matricula" name="matricula" id="matricula">
+                <div *ngIf="alumnoForm.get('matricula')?.touched && alumnoForm.get('matricula')?.errors?.['required']"
+                class="alert alert-danger">
+                Error, campo requerido
+                </div>
+            </div>
+            <div class="mb-4">
+                <label for="nombre" class="form-label">Nombre</label>
+                <input type="text" formControlName="nombre" required  class="form-control" name="nombre" id="nombre">
+                <div *ngIf="alumnoForm.get('nombre')?.touched && alumnoForm.get('nombre')?.errors?.['minlength']" class="alert alert-danger">
+                    El campo debe de ser mayor a
+                    {{alumnoForm.get('nombre')?.errors?.['minlength']?.requiredLength}} caracteres
+                </div>
+            </div>
+            <div class="mb-4">
+                <label for="edad" class="form-label">Edad:</label>
+                <input type="number" class="form-control" formControlName="edad" name="edad" id="edad">
+            </div>
+            <div class="mb-4">
+                <label for="correo" class="form-label">Correo:</label>
+                <input type="text" class="form-control" formControlName="correo" name="correo" id="correo">
+            </div>
+            <div class="mb-4">
+                <label for="pago" class="form-label">Pago:</label>
+                <input type="number" class="form-control" formControlName="pago" name="pago" id="pago">
+            </div>
+            <div class="mb-4">
+                <label for="foto" class="form-label">Foto:</label>
+                <input type="text" class="form-control" formControlName="foto" name="foto" id="foto">
+            </div>
+            <div class="mb-4">
+                <label for="calif" class="form-label">Calificación:</label>
+                <input type="text" class="form-control" formControlName="calif" name="calif" id="calif">
+            </div>
+            <div class="d-grid gap-2 col-4 float-end">
+                <button class="btn btn-info btn-lg">Guardar</button>
+            </div>
+        </form>
+    </div>
+    <div class="col-6">
+        <table class="table table-responsive">
+            <thead>
+                <tr>
+                    <th>Matricula</th>
+                    <th>Nombre</th>
+                    <th>Edad</th>
+                    <th>Correo</th>
+                    <th>Pago</th>
+                    <th>Foto</th>
+                    <th>Calificación</th>
+                </tr>
+            </thead>
+            <tbody>
+                <td>{{mat}}</td>
+                <td>{{nombre}}</td>
+                <td>{{edad}}</td>
+                <td>{{correo}}</td>
+                <td>{{pago}}</td>
+                <td>{{foto}}</td>
+                <td>{{calif}}</td>
+            </tbody>
+        </table>
+    </div>
+</div>
